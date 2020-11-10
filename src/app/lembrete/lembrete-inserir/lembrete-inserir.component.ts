@@ -7,6 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LembreteInserirComponent implements OnInit {
 
+  cadastro: string;
+  realizacao: string;
+  descricao: string;
+
+  onAdicionarLembrete() {
+    alert('Botão pressionado');
+  }
+
+
+
   constructor() { }
 
   ngOnInit(): void {
