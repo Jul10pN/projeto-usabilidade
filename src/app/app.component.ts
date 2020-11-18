@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Lembrete } from './lembrete/lembrete.model';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'projeto-usabilidade';
 
+  lembretes: Lembrete[] = []
+
   onLembreteAdicionado(lembrete) {
-    console.log(lembrete);
+    this.lembretes = [ ...this.lembretes, lembrete ]
   }
 }

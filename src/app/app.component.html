@@ -3,6 +3,10 @@
 
 <main>
 <app-lembrete-inserir
- (lembreteAdicionado)="onLembreteAdicionado($event)"></app-lembrete-inserir>
-<app-lembrete-lista></app-lembrete-lista>
+ (lembreteAdicionado)="onLembreteAdicionado($event)">
+</app-lembrete-inserir>
+
+<app-lembrete-lista
+  [lembretes]="lembretes">
+</app-lembrete-lista>
 </main>
