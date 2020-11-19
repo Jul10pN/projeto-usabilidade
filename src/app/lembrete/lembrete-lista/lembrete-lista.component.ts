@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Lembrete } from '../lembrete.model';
 import { LembreteService } from '../lembrete.service';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Component({
@@ -8,16 +9,28 @@ import { LembreteService } from '../lembrete.service';
   templateUrl: './lembrete-lista.component.html',
   styleUrls: ['./lembrete-lista.component.css']
 })
-export class LembreteListaComponent implements OnInit {
+export class LembreteListaComponent implements OnInit, OnDestroy {
 
   lembretes: Lembrete[] = []
-
+  private  lembretesSubscription: Subscription;
   constructor(public lembreteService: LembreteService) {
 
   }
 
   ngOnInit(): void {
     this.lembretes = this.lembreteService.getLembretes();
+
+    this.lembretesSubscription = this.lembreteService
+    .getListaLembretesAtualizadaObservable()
+    .subscribe(
+      (lembretes: Lembrete[]) =>{
+        this.lembretes = lembretes;
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.lembretesSubscription.unsubscribe();
   }
 
 }

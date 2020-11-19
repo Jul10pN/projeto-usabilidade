@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Lembrete} from './lembrete.model';
 @Injectable({
   providedIn: 'root'
@@ -7,13 +8,9 @@ export class LembreteService {
 
   constructor() { }
 
-  private lembretes: Lembrete [] = [
-    {
-      cadastro: '18/11/2020',
-      realizacao: '25/12/2020',
-      descricao: 'Natal'
-    }
-  ];
+  private lembretes: Lembrete [] = [];
+
+  private listaLembretesAtualizada = new Subject<Lembrete[]>();
 
   getLembretes(): Lembrete []{
     return [...this.lembretes];
@@ -26,8 +23,12 @@ export class LembreteService {
       descricao: descricao
     };
     this.lembretes.push(lembrete);
+
+    this.listaLembretesAtualizada.next([...this.lembretes]);
   }
 
-
+    getListaLembretesAtualizadaObservable(){
+      return this.listaLembretesAtualizada.asObservable();
+    }
 
 }

@@ -18,11 +18,15 @@ export class LembreteInserirComponent  {
     if(form.invalid) return;
     this.lembreteService.adicionarLembrete(
       form.value.cadastro,
-     form.value.realizacao,
+      form.value.realizacao,
       form.value.descricao
     );
-  }
+      form.resetForm();
 
+
+
+
+  }
 }
 
 
