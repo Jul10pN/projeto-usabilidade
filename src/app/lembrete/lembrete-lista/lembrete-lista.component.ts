@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Lembrete } from '../lembrete.model';
+import { LembreteService } from '../lembrete.service';
 
 
 @Component({
@@ -9,11 +10,14 @@ import { Lembrete } from '../lembrete.model';
 })
 export class LembreteListaComponent implements OnInit {
 
-  @Input() lembretes: Lembrete[] = []
+  lembretes: Lembrete[] = []
 
-  constructor() { }
+  constructor(public lembreteService: LembreteService) {
+
+  }
 
   ngOnInit(): void {
+    this.lembretes = this.lembreteService.getLembretes();
   }
 
 }

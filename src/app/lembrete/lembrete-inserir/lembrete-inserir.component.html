@@ -1,29 +1,42 @@
 <h2>Cadastre seu lembrete</h2>
 
 <mat-card>
+  <form (submit)="onAdicionarLembrete(lembreteForm)" #lembreteForm="ngForm">
+    <mat-form-field>
+      <input type="text" matInput
+        placeholder="Data de Cadastro do lembrete"
+         name= "cadastro" ngModel
+         required
+         #cadastro="ngModel"
+         />
+         <mat-error *ngIf="cadastro.invalid">Digite uma data valida</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="text" matInput
-      placeholder="Data de Cadastro do lembrete"
-      [(ngModel)]="cadastro" />
-  </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput
+        placeholder="Data de realização"
+        name= "realizacao"ngModel
+        required
+        #realizacao="ngModel"
+        />
+        <mat-error *ngIf="cadastro.invalid">Digite uma data valida</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="text" matInput
-      placeholder="Data de realização"
-      [(ngModel)]="realizacao" />
-  </mat-form-field>
+    <mat-form-field>
+      <input type="text" matInput
+        placeholder="Descrição"
+        name="descricao" ngModel
+        required
+        #descricao
+        />
+        <mat-error *ngIf="cadastro.invalid">Digite uma descrição valida</mat-error>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input type="text" matInput
-      placeholder="Descrição"
-      [(ngModel)]="descricao" />
-  </mat-form-field>
+    <button mat-raised-button color="warn">
+      Cadastrar Lembrete
+    </button>
+  </form>
 
-  <button mat-raised-button color="warn"
-    (click)="onAdicionarLembrete()"
-    >Cadastrar Lembrete
-  </button>
 
 </mat-card>
 

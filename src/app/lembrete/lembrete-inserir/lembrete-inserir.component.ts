@@ -1,10 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Lembrete } from '../lembrete.model';
-
-
-
-
-
+import { LembreteService } from '../lembrete.service';
 
 @Component({
   selector: 'app-lembrete-inserir',
@@ -13,29 +10,18 @@ import { Lembrete } from '../lembrete.model';
 })
 export class LembreteInserirComponent  {
 
-  @Output() lembreteAdicionado = new EventEmitter<Lembrete>();
-
-  cadastro: string;
-  realizacao: string;
-  descricao: string;
-
-  onAdicionarLembrete() {
-
-    const lembrete: Lembrete = {
-      cadastro: this.cadastro,
-      realizacao: this.realizacao,
-      descricao: this.descricao
-    }
-
-    this.lembreteAdicionado.emit(lembrete);
-
-    this.cadastro = '';
-    this.realizacao = '';
-    this.descricao = '';
-
+  constructor(public lembreteService: LembreteService){
 
   }
 
+  onAdicionarLembrete(form: NgForm) {
+    if(form.invalid) return;
+    this.lembreteService.adicionarLembrete(
+      form.value.cadastro,
+     form.value.realizacao,
+      form.value.descricao
+    );
+  }
 
 }
 
