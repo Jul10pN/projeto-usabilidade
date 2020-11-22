@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const Lembrete = require('./models/lembrete')
 const bodyParser = require ('body-parser');
+const { json } = require('body-parser');
 
 app.use(bodyParser.json());
 
@@ -27,6 +28,7 @@ app.use((req, res, next) =>{
 app.get('/api/lembretes', (req, res, next) =>{
   Lembrete.find().then(
     documents => {
+      console.log(documents);
       res.status(200).json ({
         mensagem: "Tudo Ok",
         lembretes: documents
@@ -42,10 +44,18 @@ app.post('/api/lembretes', (req, res, next) =>{
     descricao: req.body.descricao
   });
 
-  lembrete.save();
-
-  console.log(lembrete);
-  res.status(201).json({mensagem: "lembrete Criado"})
+  lembrete.save().then(lembreteInserido =>{
+    console.log(lembreteInserido);
+    res.status(201).json({mensagem: "lembrete Criado", id: lembreteInserido._id})
+  });
 })
+
+app.delete('/api/lembretes/:id', (req, res, next) => {
+  Lembrete.deleteOne({_id: req.params.id}).then((resultado) => {
+    console.log(resultado);
+    res.status(200).json({mensaagem: "Lembrete Removido"});
+  })
+})
+
 
 module.exports = app

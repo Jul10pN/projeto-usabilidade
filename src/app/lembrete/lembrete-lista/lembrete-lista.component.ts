@@ -26,6 +26,11 @@ export class LembreteListaComponent implements OnInit, OnDestroy {
     });
   }
 
+  onDelete(id: String) {
+    this.lembreteService.removerLembrete(id);
+  }
+
+
   ngOnDestroy(): void {
     this.lembretesSubscription.unsubscribe();
   }

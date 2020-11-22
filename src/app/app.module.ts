@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing-module';
+import { MenuComponent } from './menu/menu.component';
 
 import { AppComponent } from './app.component';
 import { LembreteInserirComponent } from './lembrete/lembrete-inserir/lembrete-inserir.component';
@@ -17,15 +19,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LembreteInserirComponent,
     LembreteListaComponent,
-    CabecalhoComponent
+    CabecalhoComponent,
+    MenuComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
@@ -35,7 +41,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatToolbarModule,
     MatExpansionModule,
     MatDatepickerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
