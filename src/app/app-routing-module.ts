@@ -7,7 +7,8 @@ import { MenuComponent } from './menu/menu.component';
 const routes: Routes = [
   { path: 'lista', component: LembreteListaComponent},
   { path:  'cadastro', component: LembreteInserirComponent},
-  { path: '', component: MenuComponent}
+  { path: '', component: MenuComponent},
+  { path: 'editar/:idLembrete', component: LembreteInserirComponent }
 ]
 
 @NgModule({

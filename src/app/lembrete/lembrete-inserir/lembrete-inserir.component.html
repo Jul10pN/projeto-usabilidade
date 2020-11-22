@@ -1,13 +1,14 @@
 <h2>Cadastre seu lembrete</h2>
 
 <mat-card>
-  <form (submit)="onAdicionarLembrete(lembreteForm)" #lembreteForm="ngForm">
+  <form (submit)="onSalvarLembrete(lembreteForm)" #lembreteForm="ngForm">
     <mat-form-field>
       <input type="text" matInput
         placeholder="Data de Cadastro do lembrete"
          name= "cadastro" ngModel
          required
          #cadastro="ngModel"
+         [ngModel]="lembrete?.cadastro"
          />
          <mat-error *ngIf="cadastro.invalid">Digite uma data valida</mat-error>
     </mat-form-field>
@@ -18,6 +19,7 @@
         name= "realizacao"ngModel
         required
         #realizacao="ngModel"
+        [ngModel]="lembrete?.realizacao"
         />
         <mat-error *ngIf="cadastro.invalid">Digite uma data valida</mat-error>
     </mat-form-field>
@@ -27,13 +29,14 @@
         placeholder="Descrição"
         name="descricao" ngModel
         required
-        #descricao
+        #descricao="ngModel"
+        [ngModel]="lembrete?.descricao"
         />
         <mat-error *ngIf="cadastro.invalid">Digite uma descrição valida</mat-error>
     </mat-form-field>
 
     <button mat-raised-button color="warn">
-      Cadastrar Lembrete
+      Salvar Lembrete
     </button>
   </form>
 

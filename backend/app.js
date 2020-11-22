@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Lembrete = require('./models/lembrete')
 const bodyParser = require ('body-parser');
 const { json } = require('body-parser');
+const lembrete = require('./models/lembrete');
 
 app.use(bodyParser.json());
 
@@ -20,7 +21,7 @@ const lembretes = [];
 app.use((req, res, next) =>{
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
   next();
 });
 
@@ -56,6 +57,25 @@ app.delete('/api/lembretes/:id', (req, res, next) => {
     res.status(200).json({mensaagem: "Lembrete Removido"});
   })
 })
+
+app.put("/api/lembretes/:id", (req, res, next) => {
+  const lembrete = new Lembrete({
+    _id: req.params.id,
+    cadastro: req.body.cadastro,
+    realizacao: req.body.realizacao,
+    descricao: req.body.descricao
+  });
+  Lembrete.updateOne({
+    _id: req.params.id
+  },
+    lembrete
+  ).then((resultado) => {
+    console.log(resultado);
+  });
+  res.status(200).json({
+    mensaagem: 'Lembrete atualizado com sucesso'
+  })
+});
 
 
 module.exports = app

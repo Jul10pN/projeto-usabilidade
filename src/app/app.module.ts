@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMenuModule } from '@angular/material/menu';
+import { TelaLoginComponent } from './tela-login/tela-login.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { MatMenuModule } from '@angular/material/menu';
     LembreteInserirComponent,
     LembreteListaComponent,
     CabecalhoComponent,
-    MenuComponent
+    MenuComponent,
+    TelaLoginComponent
   ],
   imports: [
     AppRoutingModule,

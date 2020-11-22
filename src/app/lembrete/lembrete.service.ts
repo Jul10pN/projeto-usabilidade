@@ -29,6 +29,17 @@ export class LembreteService {
 
   private listaLembretesAtualizada = new Subject<Lembrete[]>();
 
+  atualizarLembrete(id: String, cadastro: string, realizacao: string, descricao: string) {
+    const lembrete: Lembrete = { id, cadastro, realizacao, descricao};
+    this.httpClient.put(`http://localhost:3000/api/lembretes/${id}`, lembrete).subscribe(res => console.log(res));
+  }
+
+  getLembrete(idLembrete: String) {
+    return {...this.lembretes.find((lem) => lem.id === idLembrete)};
+    //return this.httpClient.get<{_id: String, cadastro: String, realizacao: String, descricao: String}>('http://localhost:3000/api/lembretes/${id}');
+
+  }
+
   getLembretes(): void {
     this.httpClient.get<{mensagem: string, lembretes: any}>(
       'http://localhost:3000/api/lembretes'
@@ -70,5 +81,5 @@ export class LembreteService {
     getListaLembretesAtualizadaObservable(){
       return this.listaLembretesAtualizada.asObservable();
     }
-    
+
 }
