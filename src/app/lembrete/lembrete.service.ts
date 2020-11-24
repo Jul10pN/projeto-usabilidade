@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { from, Subject } from 'rxjs';
 import { Lembrete} from './lembrete.model';
 import { HttpClient} from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -75,6 +75,7 @@ export class LembreteService {
       lembrete.id = dados.id;
       this.lembretes.push(lembrete);
       this.listaLembretesAtualizada.next([...this.lembretes]);
+      alert("lembrete salvo com sucesso");
     })
   }
 

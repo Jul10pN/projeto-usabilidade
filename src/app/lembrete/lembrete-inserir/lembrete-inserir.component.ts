@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Lembrete } from '../lembrete.model';
 import { LembreteService } from '../lembrete.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lembrete-inserir',

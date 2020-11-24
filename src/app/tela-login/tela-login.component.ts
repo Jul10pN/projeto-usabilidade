@@ -8,7 +8,7 @@ import { Usuario} from '../usuario';
 })
 export class TelaLoginComponent implements OnInit {
 
-  private usuario: Usuario = new Usuario();
+  public usuario: Usuario = new Usuario();
 
   constructor(private authService: AuthService) { }
 
