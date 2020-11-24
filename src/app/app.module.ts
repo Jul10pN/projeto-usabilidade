@@ -21,6 +21,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMenuModule } from '@angular/material/menu';
 import { TelaLoginComponent } from './tela-login/tela-login.component';
+import { MatTabsModule} from '@angular/material/tabs';
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { MatIconModule} from '@angular/material/icon';
+import { AuthService } from './login/auth.service';
+
 
 
 @NgModule({
@@ -35,6 +40,9 @@ import { TelaLoginComponent } from './tela-login/tela-login.component';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatIconModule,
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
@@ -45,8 +53,9 @@ import { TelaLoginComponent } from './tela-login/tela-login.component';
     MatDatepickerModule,
     HttpClientModule,
     MatMenuModule
+
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -37,7 +37,7 @@ export class LembreteInserirComponent implements OnInit {
 
   onSalvarLembrete(form: NgForm) {
     if(form.invalid) return;
-    if(this.modo === "criar") {
+    if(this.modo === "cadastro") {
       this.lembreteService.adicionarLembrete(
         form.value.cadastro,
         form.value.realizacao,
@@ -52,9 +52,6 @@ export class LembreteInserirComponent implements OnInit {
     );
     }
     form.resetForm();
-
-
-
 
   }
 }

@@ -1,1 +1,51 @@
-<p>tela-login works!</p>
+<div class="login-page">
+  <mat-card class="mat-elevation-z12">
+    <mat-card-title style="text-align:center;">Login</mat-card-title>
+    <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+      <mat-tab label="Cadastre-se">
+          <mat-card-content>
+            <form action="">
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Email"
+                  required
+                  name="email"
+                  ngModel
+                  [(ngModel)]="usuario.email"
+                  #email="ngModel">
+                  <mat-error *ngIf="email.invalid">Email é requerido</mat-error>
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Senha"
+                  type="password"
+                  required
+                  name="senha"
+                  ngModel
+                  [(ngModel)]="usuario.senha"
+                  #senha="ngModel">
+                  <mat-error
+                    *ngIf="senha.errors && senha.errors.required">
+                    Senha requerida
+                  </mat-error>
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="fazerLogin()"
+                class="login-button">
+                Logar
+              </button>
+
+
+          </form>
+        </mat-card-content>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card>
+</div>
