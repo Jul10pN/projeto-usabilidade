@@ -22,6 +22,7 @@ export class LembreteService {
         return lem.id !== id
       })
       this.listaLembretesAtualizada.next([...this.lembretes]);
+      alert("lembrete removido com sucesso");
     });
   }
 
@@ -32,12 +33,11 @@ export class LembreteService {
   atualizarLembrete(id: String, cadastro: string, realizacao: string, descricao: string) {
     const lembrete: Lembrete = { id, cadastro, realizacao, descricao};
     this.httpClient.put(`http://localhost:3000/api/lembretes/${id}`, lembrete).subscribe(res => console.log(res));
+    alert("lembrete atualizado com sucesso");
   }
 
   getLembrete(idLembrete: String) {
     return {...this.lembretes.find((lem) => lem.id === idLembrete)};
-    //return this.httpClient.get<{_id: String, cadastro: String, realizacao: String, descricao: String}>('http://localhost:3000/api/lembretes/${id}');
-
   }
 
   getLembretes(): void {
